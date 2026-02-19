@@ -1,0 +1,124 @@
+{
+  "version": "1.0.0",
+  "sections": {
+    "main": [
+      {
+        "answer": {}
+      },
+      {
+        "ai": {
+          "prompt": {
+            "pom": [
+              {
+                "title": "Personality",
+                "body": "You are Buddy, a cheerful and witty AI phone assistant. You have a warm, upbeat personality and you genuinely enjoy helping people. You're a bit of a dad joke enthusiast. Think of yourself as that friendly neighbor who always has a joke ready and knows what the weather is like."
+              },
+              {
+                "title": "Voice Style",
+                "body": "Since this is a phone conversation, follow these rules:",
+                "bullets": [
+                  "Keep responses to 1-2 sentences when possible",
+                  "Use conversational language, not formal or robotic",
+                  "React to what the caller says before jumping to information",
+                  "If they laugh at a joke, acknowledge it warmly",
+                  "Use natural transitions between topics"
+                ]
+              },
+              {
+                "title": "Capabilities",
+                "body": "You can help with the following:",
+                "bullets": [
+                  "Weather: current conditions for any city worldwide",
+                  "Jokes: endless supply of dad jokes, always fresh",
+                  "General chat: friendly conversation on any topic"
+                ]
+              }
+            ]
+          },
+          "SWAIG": {
+            "functions": [
+              {
+                "function": "tell_joke",
+                "description": "Tell the caller a funny dad joke. Use this whenever someone asks for a joke or humor.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "fillers": {
+                  "en-US": [
+                    "Let me think of a good one...",
+                    "Oh, I've got one for you...",
+                    "Here comes a good one..."
+                  ]
+                },
+                "web_hook_url": "https://signalwire:sKX0FV4CUcQUXt_M9KhZtX5mY0s6lpIvuQJHPR_ixvc@briankwest.ngrok.io/swaig/?__token=MTc3YzQzMDQtNGY5My00NTA0LTk4ZTQtNjM3NTM0MTVlZThmLnRlbGxfam9rZS4xNzcxNTE0OTU4LjYyZmRiMWViLmQwNjkyMTM5NWI1MmI4OGE%3D"
+              },
+              {
+                "function": "get_weather",
+                "description": "Get the current weather for a city. Use this when the caller asks about weather, temperature, or conditions.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "city": {
+                      "type": "string",
+                      "description": "The city to get weather for"
+                    }
+                  },
+                  "required": [
+                    "city"
+                  ]
+                },
+                "data_map": {
+                  "webhooks": [
+                    {
+                      "url": "https://api.weatherapi.com/v1/current.json?key=&q=${enc:args.city}",
+                      "method": "GET",
+                      "output": {
+                        "response": "Weather in ${args.city}: ${response.current.condition.text}, ${response.current.temp_f} degrees Fahrenheit, humidity ${response.current.humidity} percent. Feels like ${response.current.feelslike_f} degrees."
+                      }
+                    }
+                  ],
+                  "output": {
+                    "response": "Sorry, I couldn't get the weather for ${args.city}. Please check the city name and try again."
+                  }
+                }
+              }
+            ],
+            "defaults": {
+              "web_hook_url": "https://signalwire:sKX0FV4CUcQUXt_M9KhZtX5mY0s6lpIvuQJHPR_ixvc@briankwest.ngrok.io/swaig/"
+            }
+          },
+          "params": {
+            "end_of_speech_timeout": 600,
+            "attention_timeout": 15000,
+            "attention_timeout_prompt": "Are you still there? I can help with weather, jokes, or math!"
+          },
+          "hints": [
+            "Buddy",
+            "weather",
+            "joke",
+            "temperature",
+            "forecast"
+          ],
+          "languages": [
+            {
+              "name": "English",
+              "code": "en-US",
+              "voice": "rime.spore",
+              "speech_fillers": [
+                "Um",
+                "Well",
+                "So"
+              ],
+              "function_fillers": [
+                "Let me check on that for you...",
+                "One moment while I look that up...",
+                "Hang on just a sec..."
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

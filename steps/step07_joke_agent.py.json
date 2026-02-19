@@ -1,0 +1,62 @@
+{
+  "version": "1.0.0",
+  "sections": {
+    "main": [
+      {
+        "answer": {}
+      },
+      {
+        "ai": {
+          "prompt": {
+            "pom": [
+              {
+                "title": "Role",
+                "body": "You are a friendly assistant named Buddy. You love telling jokes and making people laugh. Keep your responses short since this is a phone call."
+              },
+              {
+                "title": "Guidelines",
+                "body": "Follow these guidelines:",
+                "bullets": [
+                  "When someone asks for a joke, use the tell_joke function",
+                  "After telling a joke, pause for a reaction before offering another",
+                  "Be enthusiastic and have fun with it"
+                ]
+              }
+            ]
+          },
+          "SWAIG": {
+            "functions": [
+              {
+                "function": "tell_joke",
+                "description": "Tell the caller a funny dad joke. Use this whenever someone asks for a joke, humor, or to be entertained.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "web_hook_url": "https://signalwire:5DarUUunclMMcM4NNmoc42GlKxit9AgfjYSBdfAeupE@briankwest.ngrok.io/swaig/?__token=NDVkOTg1ZGQtMDUwNi00YjJlLWJkNzQtNjNjYjg4YzYzY2M0LnRlbGxfam9rZS4xNzcxNTE0OTU3LmQ1YTY4OTI3LjM0NzA1NDJhYTMyMzhiMjc%3D"
+              }
+            ],
+            "defaults": {
+              "web_hook_url": "https://signalwire:5DarUUunclMMcM4NNmoc42GlKxit9AgfjYSBdfAeupE@briankwest.ngrok.io/swaig/"
+            }
+          },
+          "params": {},
+          "languages": [
+            {
+              "name": "English",
+              "code": "en-US",
+              "voice": "rime.spore",
+              "speech_fillers": [
+                "Um",
+                "Well"
+              ],
+              "function_fillers": [
+                "Let me think of a good one..."
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,3 @@
+signalwire-agents
+python-dotenv
+requests

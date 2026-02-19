@@ -1,0 +1,186 @@
+{
+  "version": "1.0.0",
+  "sections": {
+    "main": [
+      {
+        "answer": {}
+      },
+      {
+        "ai": {
+          "prompt": {
+            "pom": [
+              {
+                "title": "Personality",
+                "body": "You are Buddy, a cheerful and witty AI phone assistant. You have a warm, upbeat personality and you genuinely enjoy helping people. You're a bit of a dad joke enthusiast. Think of yourself as that friendly neighbor who always has a joke ready and knows what the weather is like."
+              },
+              {
+                "title": "Voice Style",
+                "body": "Since this is a phone conversation, follow these rules:",
+                "bullets": [
+                  "Keep responses to 1-2 sentences when possible",
+                  "Use conversational language, not formal or robotic",
+                  "React to what the caller says before jumping to information",
+                  "If they laugh at a joke, acknowledge it warmly",
+                  "Use natural transitions between topics"
+                ]
+              },
+              {
+                "title": "Capabilities",
+                "body": "You can help with the following:",
+                "bullets": [
+                  "Weather: current conditions for any city worldwide",
+                  "Jokes: endless supply of dad jokes, always fresh",
+                  "Date and time: current time in any timezone",
+                  "Math: calculations, percentages, conversions",
+                  "General chat: friendly conversation on any topic"
+                ]
+              },
+              {
+                "title": "Date and Time Information",
+                "body": "You can provide current date and time information.",
+                "bullets": [
+                  "Use get_current_time to tell users what time it is",
+                  "Use get_current_date to tell users today's date",
+                  "Both tools support different timezones"
+                ]
+              },
+              {
+                "title": "Mathematical Calculations",
+                "body": "You can perform mathematical calculations for users.",
+                "bullets": [
+                  "Use the calculate tool for any math expressions",
+                  "Supports basic operations: +, -, *, /, %, ** (power)",
+                  "Can handle parentheses for complex expressions"
+                ]
+              }
+            ]
+          },
+          "SWAIG": {
+            "functions": [
+              {
+                "function": "tell_joke",
+                "description": "Tell the caller a funny dad joke. Use this whenever someone asks for a joke or humor.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "fillers": {
+                  "en-US": [
+                    "Let me think of a good one...",
+                    "Oh, I've got one for you...",
+                    "Here comes a good one..."
+                  ]
+                },
+                "web_hook_url": "https://signalwire:yxZpm8_937NFupBI8bz48lCud1hUMPMdHiN0tazOGnA@briankwest.ngrok.io/swaig/?__token=ODQ0YzlkZDktM2E3Ny00MDExLWI5NDYtZDk2MDBkMjdiNDRjLnRlbGxfam9rZS4xNzcxNTE0OTU5LjczZGY0NGE4LjhkZDZiMzFhMzUyNWU4MDE%3D"
+              },
+              {
+                "function": "get_weather",
+                "description": "Get the current weather for a city. Use this when the caller asks about weather, temperature, or conditions.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "city": {
+                      "type": "string",
+                      "description": "The city to get weather for"
+                    }
+                  },
+                  "required": [
+                    "city"
+                  ]
+                },
+                "data_map": {
+                  "webhooks": [
+                    {
+                      "url": "https://api.weatherapi.com/v1/current.json?key=&q=${enc:args.city}",
+                      "method": "GET",
+                      "output": {
+                        "response": "Weather in ${args.city}: ${response.current.condition.text}, ${response.current.temp_f} degrees Fahrenheit, humidity ${response.current.humidity} percent. Feels like ${response.current.feelslike_f} degrees."
+                      }
+                    }
+                  ],
+                  "output": {
+                    "response": "Sorry, I couldn't get the weather for ${args.city}. Please check the city name and try again."
+                  }
+                }
+              },
+              {
+                "function": "get_current_time",
+                "description": "Get the current time, optionally in a specific timezone",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "timezone": {
+                      "type": "string",
+                      "description": "Timezone name (e.g., 'America/New_York', 'Europe/London'). Defaults to UTC."
+                    }
+                  }
+                },
+                "web_hook_url": "https://signalwire:yxZpm8_937NFupBI8bz48lCud1hUMPMdHiN0tazOGnA@briankwest.ngrok.io/swaig/?__token=ODQ0YzlkZDktM2E3Ny00MDExLWI5NDYtZDk2MDBkMjdiNDRjLmdldF9jdXJyZW50X3RpbWUuMTc3MTUxNDk1OS5mODZjY2EzNy4wNGNkZTRlZWZlZTJiNGVl"
+              },
+              {
+                "function": "get_current_date",
+                "description": "Get the current date",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "timezone": {
+                      "type": "string",
+                      "description": "Timezone name for the date. Defaults to UTC."
+                    }
+                  }
+                },
+                "web_hook_url": "https://signalwire:yxZpm8_937NFupBI8bz48lCud1hUMPMdHiN0tazOGnA@briankwest.ngrok.io/swaig/?__token=ODQ0YzlkZDktM2E3Ny00MDExLWI5NDYtZDk2MDBkMjdiNDRjLmdldF9jdXJyZW50X2RhdGUuMTc3MTUxNDk1OS42ZjM2ZDQ3OC5jNzMzNTEzMzk5ZTU3ZjQy"
+              },
+              {
+                "function": "calculate",
+                "description": "Perform a mathematical calculation with basic operations (+, -, *, /, %, **)",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "expression": {
+                      "type": "string",
+                      "description": "Mathematical expression to evaluate (e.g., '2 + 3 * 4', '(10 + 5) / 3')"
+                    }
+                  }
+                },
+                "web_hook_url": "https://signalwire:yxZpm8_937NFupBI8bz48lCud1hUMPMdHiN0tazOGnA@briankwest.ngrok.io/swaig/?__token=ODQ0YzlkZDktM2E3Ny00MDExLWI5NDYtZDk2MDBkMjdiNDRjLmNhbGN1bGF0ZS4xNzcxNTE0OTU5LjRiYzhhMGJhLmFhMWQ4NzdiN2Q4ZTUwYTA%3D"
+              }
+            ],
+            "defaults": {
+              "web_hook_url": "https://signalwire:yxZpm8_937NFupBI8bz48lCud1hUMPMdHiN0tazOGnA@briankwest.ngrok.io/swaig/"
+            }
+          },
+          "params": {
+            "end_of_speech_timeout": 600,
+            "attention_timeout": 15000,
+            "attention_timeout_prompt": "Are you still there? I can help with weather, jokes, or math!"
+          },
+          "hints": [
+            "Buddy",
+            "weather",
+            "joke",
+            "temperature",
+            "forecast"
+          ],
+          "languages": [
+            {
+              "name": "English",
+              "code": "en-US",
+              "voice": "rime.spore",
+              "speech_fillers": [
+                "Um",
+                "Well",
+                "So"
+              ],
+              "function_fillers": [
+                "Let me check on that for you...",
+                "One moment while I look that up...",
+                "Hang on just a sec..."
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

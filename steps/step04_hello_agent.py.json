@@ -1,0 +1,34 @@
+{
+  "version": "1.0.0",
+  "sections": {
+    "main": [
+      {
+        "answer": {}
+      },
+      {
+        "ai": {
+          "prompt": {
+            "pom": [
+              {
+                "title": "Role",
+                "body": "You are a friendly assistant named Buddy. You greet callers warmly, ask how their day is going, and have a brief pleasant conversation. Keep your responses short since this is a phone call."
+              }
+            ]
+          },
+          "params": {},
+          "languages": [
+            {
+              "name": "English",
+              "code": "en-US",
+              "voice": "rime.spore",
+              "fillers": [
+                "Um",
+                "Well"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
