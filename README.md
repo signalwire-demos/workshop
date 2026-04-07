@@ -24,6 +24,16 @@ And you'll learn three different ways to give your agent capabilities:
 2. **DataMap** -- declare an API call, SignalWire runs it serverlessly
 3. **Skills** -- one line of code, instant capability
 
+---
+
+> [!TIP]
+> ### Not a developer? No problem.
+> **[Follow Along with the Non-Developer's Guide](https://workshop-replit-raleigh-2026.replit.app/)**
+>
+> We've gone ahead and built the agents for you. Just copy the [SWML](https://signalwire.com/docs/swml) Webhook URL and paste into your SignalWire dashboard and you're ready to talk to your agent -- no code, no setup headaches.
+
+---
+
 ### Prerequisites
 
 Before we start, make sure you have:
