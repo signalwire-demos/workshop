@@ -95,7 +95,7 @@ class JokeAgent(AgentBase):
 
     def on_tell_joke(self, args, raw_data):
         joke = random.choice(JOKES)
-        return FunctionResult(f"Here's a joke: {joke}")
+        return FunctionResult(f"Here's a joke: ${joke}")
 
     def on_summary(self, summary, raw_data):
         """Save post-prompt data to calls/ folder for debugging."""
