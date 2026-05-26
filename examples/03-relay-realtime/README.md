@@ -32,4 +32,4 @@ REST is what you use *to set things up*. RELAY is what you use *to react to what
 | PHP | ✅ | [`ports/php/`](ports/php/) (two-port: HTTP + WS on separate sockets) |
 | Rust | ✅ | [`ports/rust/`](ports/rust/) |
 | .NET | ✅ | [`ports/dotnet/`](ports/dotnet/) |
-| C++ | 🚧 | [`ports/cpp/`](ports/cpp/) (CLI sketch) |
+| C++ | ✅ | [`ports/cpp/`](ports/cpp/) (CLI — events stream to stdout as JSON lines) |

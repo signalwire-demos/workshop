@@ -26,4 +26,4 @@ Each button shows the actual SDK call (left pane) and the response (right pane),
 | Perl | ✅ | [`ports/perl/`](ports/perl/) |
 | Rust | ✅ | [`ports/rust/`](ports/rust/) |
 | .NET | ✅ | [`ports/dotnet/`](ports/dotnet/) |
-| C++ | 🚧 | `ports/cpp/` (pending) |
+| C++ | ✅ | [`ports/cpp/`](ports/cpp/) (CLI) |

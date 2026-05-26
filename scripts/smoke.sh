@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
-# Pre-workshop smoke test. Validates each example's source compiles / parses.
-#
-# This is a SOURCE-LEVEL smoke. It does NOT boot the apps or hit SignalWire's
-# servers — that requires real credentials and is out of scope for CI. The
-# day-of "fresh user" dry-run (see LAB.md) is the live validation.
-#
+# Pre-workshop smoke test. Source-level checks: file presence + Python syntax.
 # Run from repo root: bash scripts/smoke.sh
 
 set -euo pipefail
@@ -14,11 +9,15 @@ cd "$ROOT"
 
 PASS=0
 FAIL=0
-SKIP=0
 
-check_python() {
+check_path() {
+    if [ -e "$1" ]; then PASS=$((PASS+1)); echo "  [PASS] $1"
+    else FAIL=$((FAIL+1)); echo "  [FAIL] $1 missing"; fi
+}
+
+check_python_dir() {
     local dir="$1"
-    if [ ! -d "$dir" ]; then SKIP=$((SKIP+1)); echo "  [SKIP] $dir (not built)"; return; fi
+    if [ ! -d "$dir" ]; then FAIL=$((FAIL+1)); echo "  [FAIL] $dir (missing)"; return; fi
     if python3 -m py_compile "$dir"/*.py 2>/dev/null; then
         PASS=$((PASS+1)); echo "  [PASS] $dir (python syntax)"
     else
@@ -26,57 +25,53 @@ check_python() {
     fi
 }
 
-check_typescript() {
-    local dir="$1"
-    if [ ! -d "$dir" ]; then SKIP=$((SKIP+1)); echo "  [SKIP] $dir (not built)"; return; fi
-    if ! command -v node >/dev/null 2>&1; then
-        SKIP=$((SKIP+1)); echo "  [SKIP] $dir (node not installed)"; return
-    fi
-    # Quick parse via node --check on each .ts after stripping types? Not
-    # practical without tsc. Instead, syntax-check the package.json + verify
-    # required files exist.
-    local missing=()
-    for f in package.json tsconfig.json app.ts demo.js; do
-        [ -f "$dir/$f" ] || missing+=("$f")
-    done
-    if [ ${#missing[@]} -eq 0 ]; then
-        PASS=$((PASS+1)); echo "  [PASS] $dir (files present)"
+check_lang() {
+    local pillar_dir="$1" lang="$2" expected="$3"
+    local dir
+    if [ "$lang" = "python" ] || [ "$lang" = "typescript" ]; then
+        dir="$pillar_dir/$lang"
     else
-        FAIL=$((FAIL+1)); echo "  [FAIL] $dir (missing: ${missing[*]})"
+        dir="$pillar_dir/ports/$lang"
     fi
+    if [ ! -d "$dir" ]; then
+        FAIL=$((FAIL+1)); echo "  [FAIL] $dir (dir missing)"
+        return
+    fi
+    local ok=true
+    for f in $expected; do
+        if [ ! -e "$dir/$f" ]; then ok=false; echo "  [FAIL] $dir/$f missing"; FAIL=$((FAIL+1)); fi
+    done
+    if $ok; then PASS=$((PASS+1)); echo "  [PASS] $dir ($expected)"; fi
 }
 
-echo "=== Workshop source smoke test ==="
-echo ""
+echo "=== Workshop smoke test ==="
 
-echo "Pillar 1 — AI Agent"
-check_python  "examples/01-ai-agent/python"
-check_typescript "examples/01-ai-agent/typescript"
-
-echo ""
-echo "Pillar 2 — REST Tour"
-check_python  "examples/02-rest-tour/python"
-check_typescript "examples/02-rest-tour/typescript"
-
-echo ""
-echo "Pillar 3 — RELAY Realtime"
-check_python  "examples/03-relay-realtime/python"
-check_typescript "examples/03-relay-realtime/typescript"
+for pillar in 01-ai-agent 02-rest-tour 03-relay-realtime; do
+    echo ""; echo "Pillar: $pillar"
+    check_python_dir "examples/$pillar/python"
+    check_lang "examples/$pillar" typescript "package.json tsconfig.json app.ts demo.js"
+    check_lang "examples/$pillar" ruby      "Gemfile app.rb demo.js"
+    check_lang "examples/$pillar" go        "go.mod main.go demo.js"
+    check_lang "examples/$pillar" java      "build.gradle settings.gradle"
+    check_lang "examples/$pillar" perl      "cpanfile app.pl demo.js"
+    check_lang "examples/$pillar" php       "composer.json demo.js"
+    check_lang "examples/$pillar" rust      "Cargo.toml src/main.rs demo.js"
+    check_lang "examples/$pillar" dotnet    "Workshop.csproj demo.js"
+    check_lang "examples/$pillar" cpp       "CMakeLists.txt main.cpp"
+done
 
 echo ""
 echo "Shared UI"
 for f in shared/ui/creds-form.html shared/ui/setup.js shared/ui/styles.css; do
-    if [ -f "$f" ]; then PASS=$((PASS+1)); echo "  [PASS] $f"
-    else FAIL=$((FAIL+1)); echo "  [FAIL] $f missing"; fi
+    check_path "$f"
 done
 
 echo ""
 echo "Deploy configs"
 for f in .devcontainer/devcontainer.json .replit replit.nix; do
-    if [ -f "$f" ]; then PASS=$((PASS+1)); echo "  [PASS] $f"
-    else FAIL=$((FAIL+1)); echo "  [FAIL] $f missing"; fi
+    check_path "$f"
 done
 
 echo ""
-echo "=== Summary: $PASS pass, $FAIL fail, $SKIP skip ==="
+echo "=== Summary: $PASS pass, $FAIL fail ==="
 [ "$FAIL" -eq 0 ]
