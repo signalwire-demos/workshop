@@ -15,4 +15,8 @@ Each button shows the actual SDK call (left pane) and the response (right pane),
 
 ## Per-language implementations
 
-Same layout as Pillar 1 — `python/` is the reference, `typescript/` is the closing demo, `ports/<lang>/` for the other 8.
+| Language | Status | Path |
+|---|---|---|
+| Python (reference) | ✅ | [`python/`](python/) |
+| TypeScript (closing demo) | ✅ | [`typescript/`](typescript/) |
+| Ruby / Go / Java / Perl / Rust / PHP / .NET / C++ | 🚧 | `ports/<lang>/` (pending) |

@@ -21,4 +21,9 @@ REST is what you use *to set things up*. RELAY is what you use *to react to what
 
 ## Per-language implementations
 
-Same layout. Python reference + TypeScript closing + 7 parity ports. C++ is CLI-only here too (WebSocket events stream to stdout).
+| Language | Status | Path |
+|---|---|---|
+| Python (reference) | ✅ | [`python/`](python/) |
+| TypeScript (closing demo) | ✅ | [`typescript/`](typescript/) |
+| Ruby / Go / Java / Perl / Rust / PHP / .NET | 🚧 | `ports/<lang>/` (pending) |
+| C++ | 🚧 | `ports/cpp/` (CLI only) |
