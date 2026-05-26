@@ -20,4 +20,5 @@ Each button shows the actual SDK call (left pane) and the response (right pane),
 | Python (reference) | ✅ | [`python/`](python/) |
 | TypeScript (closing demo) | ✅ | [`typescript/`](typescript/) |
 | Ruby | ✅ | [`ports/ruby/`](ports/ruby/) |
-| Go / Java / Perl / Rust / PHP / .NET / C++ | 🚧 | `ports/<lang>/` (pending) |
+| Go | ✅ | [`ports/go/`](ports/go/) |
+| Java / Perl / Rust / PHP / .NET / C++ | 🚧 | `ports/<lang>/` (pending) |
