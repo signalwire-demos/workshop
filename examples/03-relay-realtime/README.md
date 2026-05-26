@@ -25,9 +25,11 @@ REST is what you use *to set things up*. RELAY is what you use *to react to what
 |---|---|---|
 | Python (reference) | ✅ | [`python/`](python/) |
 | TypeScript (closing demo) | ✅ | [`typescript/`](typescript/) |
+| Ruby | ✅ | [`ports/ruby/`](ports/ruby/) |
 | Go | ✅ | [`ports/go/`](ports/go/) |
 | Java | ✅ | [`ports/java/`](ports/java/) |
 | Perl | ✅ | [`ports/perl/`](ports/perl/) |
+| PHP | ✅ | [`ports/php/`](ports/php/) (two-port: HTTP + WS on separate sockets) |
 | Rust | ✅ | [`ports/rust/`](ports/rust/) |
-| Ruby / PHP / .NET | 🚧 | filling in |
+| .NET | ✅ | [`ports/dotnet/`](ports/dotnet/) |
 | C++ | 🚧 | [`ports/cpp/`](ports/cpp/) (CLI sketch) |

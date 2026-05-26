@@ -1,0 +1,12 @@
+{
+    "name": "workshop/relay-realtime-php",
+    "type": "project",
+    "require": {
+        "php": ">=8.1",
+        "signalwire/sdk": "^1.1",
+        "cboden/ratchet": "^0.4.4",
+        "react/event-loop": "^1.5",
+        "react/http": "^1.10",
+        "react/socket": "^1.15"
+    }
+}
