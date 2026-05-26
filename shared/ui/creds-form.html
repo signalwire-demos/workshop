@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SignalWire Workshop — Setup</title>
+  <link rel="stylesheet" href="/shared/styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>SignalWire Workshop</h1>
+      <p class="subtitle" data-pillar-name>Loading…</p>
+    </header>
+
+    <section id="creds" class="card">
+      <h2>Enter your credentials</h2>
+      <p class="hint">
+        From <a href="https://dashboard.signalwire.com" target="_blank" rel="noopener">dashboard.signalwire.com</a>.
+        We'll create a workshop subscriber and mint a session JWT for you — no manual setup.
+      </p>
+      <form id="creds-form">
+        <label>
+          <span>Project ID</span>
+          <input type="text" name="project_id" required autocomplete="off" placeholder="00000000-0000-0000-0000-000000000000" />
+        </label>
+        <label>
+          <span>Space</span>
+          <input type="text" name="space" required autocomplete="off" placeholder="yourname.signalwire.com" />
+        </label>
+        <label>
+          <span>Auth Token</span>
+          <input type="password" name="token" required autocomplete="off" placeholder="PT…" />
+        </label>
+        <button type="submit" id="submit-btn">Set up and launch</button>
+        <p id="error" class="error" hidden></p>
+      </form>
+    </section>
+
+    <section id="ready" class="card" hidden>
+      <h2>You're set up</h2>
+      <dl class="kv">
+        <dt>Subscriber</dt><dd id="subscriber-id">—</dd>
+        <dt>JWT</dt><dd><code id="jwt-snippet">—</code></dd>
+      </dl>
+      <div id="demo-mount">
+        <!-- Each example replaces this with its own demo view via window.workshop.onReady() -->
+      </div>
+    </section>
+  </main>
+
+  <script src="/shared/setup.js"></script>
+  <!-- Example-specific demo script: each example serves its own /demo.js -->
+  <script src="/demo.js" defer></script>
+</body>
+</html>

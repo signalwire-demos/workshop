@@ -1,29 +1,54 @@
-sdks/
-perl/lib
-python/venv/
-.test-logs/
-INSTRUCTOR_GUIDE.md
-
-# Environment / credentials
-.env
-*/.env
-
-# Build artifacts
-cpp/build/
-cpp/agent.cpp
-java/.gradle/
-java/build/
-java/libs/
-java/env.sh
-java/src/main/
-go/step*_*
-
-# Language package caches
-typescript/node_modules/
-typescript/package-lock.json
-ruby/.bundle/
-ruby/vendor/
-ruby/Gemfile.lock
-python/steps/__pycache__/
+# Python
 __pycache__/
-calls/
+*.pyc
+*.pyo
+venv/
+.venv/
+*.egg-info/
+
+# Node
+node_modules/
+*.log
+.npm
+package-lock.json
+
+# Ruby
+.bundle/
+vendor/bundle/
+Gemfile.lock
+
+# Go
+*.exe
+
+# Java
+build/
+*.class
+.gradle/
+
+# Rust
+target/
+Cargo.lock
+
+# PHP / Composer
+vendor/
+composer.lock
+
+# .NET
+bin/
+obj/
+
+# C++
+*.o
+*.so
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~
+
+# Local env
+.env
+.env.local
+*/.env

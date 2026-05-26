@@ -1,0 +1,4 @@
+signalwire-sdk>=3.0.2
+fastapi>=0.115
+uvicorn[standard]>=0.30
+websockets>=12.0

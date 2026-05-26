@@ -1,9 +1,0 @@
-requires 'Moo';
-requires 'JSON';
-requires 'Plack';
-requires 'Plack::Request';
-requires 'HTTP::Tiny';
-requires 'Digest::SHA';
-requires 'MIME::Base64';
-requires 'IO::Socket::SSL';
-requires 'POSIX';

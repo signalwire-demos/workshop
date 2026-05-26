@@ -1,9 +1,0 @@
-services:
-  workshop:
-    image: briankwest/workshop:latest
-    build: .
-    ports:
-      - "3000:3000"
-      - "4040:4040"
-    stdin_open: true
-    tty: true

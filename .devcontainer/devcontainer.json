@@ -1,0 +1,35 @@
+{
+  "name": "SignalWire Workshop",
+  "image": "mcr.microsoft.com/devcontainers/universal:2-linux",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": { "version": "3.12" },
+    "ghcr.io/devcontainers/features/node:1": { "version": "20" },
+    "ghcr.io/devcontainers/features/ruby:1": { "version": "3.3" },
+    "ghcr.io/devcontainers/features/go:1": { "version": "1.23" },
+    "ghcr.io/devcontainers/features/java:1": { "version": "21", "installGradle": true },
+    "ghcr.io/devcontainers/features/rust:1": { "version": "stable" },
+    "ghcr.io/devcontainers/features/php:1": { "version": "8.3" },
+    "ghcr.io/devcontainers/features/dotnet:2": { "version": "8.0" },
+    "ghcr.io/devcontainers/features/common-utils:2": { "installZsh": true }
+  },
+  "forwardPorts": [8000, 8001, 8002],
+  "portsAttributes": {
+    "8000": { "label": "AI Agent demo", "onAutoForward": "openBrowserOnce" },
+    "8001": { "label": "REST tour demo", "onAutoForward": "silent" },
+    "8002": { "label": "RELAY realtime demo", "onAutoForward": "silent" }
+  },
+  "postCreateCommand": "echo 'Workshop ready. cd examples/01-ai-agent/python && pip install -r requirements.txt && python app.py'",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "dbaeumer.vscode-eslint",
+        "rebornix.ruby",
+        "golang.go",
+        "redhat.java",
+        "rust-lang.rust-analyzer",
+        "ms-dotnettools.csharp"
+      ]
+    }
+  }
+}
