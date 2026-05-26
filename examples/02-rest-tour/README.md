@@ -22,4 +22,5 @@ Each button shows the actual SDK call (left pane) and the response (right pane),
 | Ruby | ✅ | [`ports/ruby/`](ports/ruby/) |
 | Go | ✅ | [`ports/go/`](ports/go/) |
 | Java | ✅ | [`ports/java/`](ports/java/) |
-| Perl / Rust / PHP / .NET / C++ | 🚧 | `ports/<lang>/` (pending) |
+| PHP | ✅ | [`ports/php/`](ports/php/) |
+| Perl / Rust / .NET / C++ | 🚧 | `ports/<lang>/` (pending) |

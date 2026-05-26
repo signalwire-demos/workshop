@@ -1,0 +1,8 @@
+{
+    "name": "workshop/ai-agent-php",
+    "type": "project",
+    "require": {
+        "php": ">=8.1",
+        "signalwire/sdk": "^1.1"
+    }
+}
