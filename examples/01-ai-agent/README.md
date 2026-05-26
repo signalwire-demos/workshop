@@ -23,7 +23,7 @@ A phone-answering AI assistant with four capabilities, demonstrating the three S
 |---|---|---|
 | Python (reference) | ✅ | [`python/`](python/) |
 | TypeScript (closing demo) | ✅ | [`typescript/`](typescript/) |
-| Ruby | 🚧 | [`ports/ruby/`](ports/ruby/) |
+| Ruby | ✅ | [`ports/ruby/`](ports/ruby/) |
 | Go | 🚧 | [`ports/go/`](ports/go/) |
 | Java | 🚧 | [`ports/java/`](ports/java/) |
 | Perl | 🚧 | [`ports/perl/`](ports/perl/) |
