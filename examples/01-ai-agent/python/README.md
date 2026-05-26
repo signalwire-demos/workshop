@@ -1,3 +1,5 @@
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/signalwire-demos/workshop) [![Run on Replit](https://replit.com/badge/github/signalwire-demos/workshop)](https://replit.com/new/github/signalwire-demos/workshop)
+
 # Pillar 1 — AI Agent (Python)
 
 Phone-answering AI agent in ~150 lines across two files (`agent.py` + `app.py`).

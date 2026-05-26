@@ -1,3 +1,5 @@
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/signalwire-demos/workshop) [![Run on Replit](https://replit.com/badge/github/signalwire-demos/workshop)](https://replit.com/new/github/signalwire-demos/workshop)
+
 # Pillar 2 — REST API Tour
 
 Programmatic control of your SignalWire account via the REST SDK. The same `RestClient` your AI agent uses, exercised against the resources you'll touch most.

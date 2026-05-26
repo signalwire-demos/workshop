@@ -1,3 +1,5 @@
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/signalwire-demos/workshop) [![Run on Replit](https://replit.com/badge/github/signalwire-demos/workshop)](https://replit.com/new/github/signalwire-demos/workshop)
+
 # Pillar 1 — AI Agent (TypeScript)
 
 Closing-demo language. Same UI, same behavior, same SDK surface as the Python reference.
