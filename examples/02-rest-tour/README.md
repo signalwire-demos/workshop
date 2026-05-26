@@ -21,4 +21,5 @@ Each button shows the actual SDK call (left pane) and the response (right pane),
 | TypeScript (closing demo) | ✅ | [`typescript/`](typescript/) |
 | Ruby | ✅ | [`ports/ruby/`](ports/ruby/) |
 | Go | ✅ | [`ports/go/`](ports/go/) |
-| Java / Perl / Rust / PHP / .NET / C++ | 🚧 | `ports/<lang>/` (pending) |
+| Java | ✅ | [`ports/java/`](ports/java/) |
+| Perl / Rust / PHP / .NET / C++ | 🚧 | `ports/<lang>/` (pending) |

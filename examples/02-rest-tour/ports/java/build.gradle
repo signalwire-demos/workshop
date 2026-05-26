@@ -1,0 +1,13 @@
+plugins {
+    id 'application'
+    id 'java'
+}
+repositories { mavenCentral() }
+dependencies {
+    implementation 'com.signalwire:signalwire-sdk:2.0.2'
+    implementation 'io.javalin:javalin:6.3.0'
+    implementation 'com.google.code.gson:gson:2.11.0'
+    implementation 'org.slf4j:slf4j-simple:2.0.13'
+}
+application { mainClass = 'RestTourApp' }
+java { sourceCompatibility = JavaVersion.VERSION_21 }
