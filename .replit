@@ -1,8 +1,8 @@
-run = "cd examples/01-ai-agent/python && pip install -r requirements.txt && python app.py"
 entrypoint = "examples/01-ai-agent/python/app.py"
+modules = ["python-3.12:v3"]
+hidden = [".gitignore", "**/__pycache__"]
 
-[nix]
-channel = "stable-24_05"
+run = ["bash", "-c", "cd examples/01-ai-agent/python && pip install -q -r requirements.txt && python app.py"]
 
 [env]
 PYTHONUNBUFFERED = "1"
@@ -10,7 +10,3 @@ PYTHONUNBUFFERED = "1"
 [[ports]]
 localPort = 8000
 externalPort = 80
-
-[deployment]
-run = ["sh", "-c", "cd examples/01-ai-agent/python && python app.py"]
-deploymentTarget = "cloudrun"
