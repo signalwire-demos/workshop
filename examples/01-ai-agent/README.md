@@ -27,9 +27,9 @@ A phone-answering AI assistant with four capabilities, demonstrating the three S
 | Go | ✅ | [`ports/go/`](ports/go/) |
 | Java | ✅ | [`ports/java/`](ports/java/) |
 | Perl | ✅ | [`ports/perl/`](ports/perl/) |
-| Rust | 🚧 | [`ports/rust/`](ports/rust/) |
+| Rust | 🚧 | [`ports/rust/`](ports/rust/) (design-note stub) |
 | PHP | ✅ | [`ports/php/`](ports/php/) |
-| .NET | 🚧 | [`ports/dotnet/`](ports/dotnet/) |
-| C++ | 🚧 | [`ports/cpp/`](ports/cpp/) (CLI only — no web UI) |
+| .NET | 🚧 | [`ports/dotnet/`](ports/dotnet/) (design-note stub) |
+| C++ | 🚧 | [`ports/cpp/`](ports/cpp/) (CLI sketch — no web UI) |
 
 Each per-language directory has its own `README.md` with run instructions.

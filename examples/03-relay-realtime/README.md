@@ -28,6 +28,5 @@ REST is what you use *to set things up*. RELAY is what you use *to react to what
 | Go | ✅ | [`ports/go/`](ports/go/) |
 | Java | ✅ | [`ports/java/`](ports/java/) |
 | Perl | ✅ | [`ports/perl/`](ports/perl/) |
-| Ruby / PHP | 🚧 | design-note stubs: [Ruby](ports/ruby/README.md), [PHP](ports/php/README.md) |
-| Rust / .NET | 🚧 | `ports/<lang>/` (pending) |
-| C++ | 🚧 | `ports/cpp/` (CLI only) |
+| Ruby / PHP / Rust / .NET | 🚧 | design-note stubs |
+| C++ | 🚧 | [`ports/cpp/`](ports/cpp/) (CLI sketch) |
