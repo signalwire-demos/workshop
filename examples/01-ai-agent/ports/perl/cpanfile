@@ -1,0 +1,3 @@
+requires 'SignalWire', '2.0.1';
+requires 'Mojolicious', '9.0';
+requires 'JSON';
