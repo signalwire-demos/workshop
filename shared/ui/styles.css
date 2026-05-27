@@ -232,3 +232,26 @@ code {
 .event-row .ts { color: var(--muted); margin-right: 8px; }
 .event-system { color: var(--muted); }
 .event-error { color: var(--error); }
+
+/* Inline pre/code blocks for URLs */
+#demo-mount pre {
+  background: var(--code-bg);
+  padding: 10px 12px;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 12px;
+  margin: 6px 0;
+  word-break: break-all;
+}
+
+.copy-btn {
+  font-size: 12px;
+  padding: 4px 12px;
+  background: #fff;
+  color: var(--accent);
+  border: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+.copy-btn:hover {
+  border-color: var(--accent);
+}
