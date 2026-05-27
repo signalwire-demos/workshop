@@ -51,6 +51,8 @@
       window.workshop.subscriberId = json.subscriber_id;
       window.workshop.projectId = body.project_id;
       window.workshop.space = body.space;
+      window.workshop.numbers = json.numbers || [];
+      window.workshop.agentBasicAuth = json.agent_basic_auth || null;
 
       sessionStorage.setItem("workshop_jwt", json.jwt);
       sessionStorage.setItem("workshop_subscriber_id", json.subscriber_id);

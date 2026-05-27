@@ -96,12 +96,14 @@ def make_server() -> AgentServer:
         STATE["creds"] = {"project_id": project_id, "space": space, "token": token}
         STATE["numbers"] = numbers
 
+        user, pw = STATE["agent_basic_auth"]
         return {
             "ok": True,
             "jwt": jwt,
             "subscriber_id": subscriber_id,
             "numbers": numbers,
             "agent_path": "/agent",
+            "agent_basic_auth": {"user": user, "password": pw},
         }
 
     @app.post("/api/wire-number")
