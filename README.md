@@ -43,7 +43,7 @@ Each pillar is implemented in all 10 SDKs:
 | Go | `go get github.com/signalwire/signalwire-go` | `examples/*/go/` |
 | Java | Maven Central `com.signalwire:signalwire-sdk` | `examples/*/java/` |
 | Perl | `cpanm SignalWire` | `examples/*/perl/` |
-| Rust | `cargo add signalwire` | `examples/*/rust/` |
+| Rust | `cargo add signalwire-sdk` (imports as `use signalwire::...`) | `examples/*/rust/` |
 | PHP | `composer require signalwire/sdk` | `examples/*/php/` |
 | .NET | `dotnet add package SignalWire.Sdk` | `examples/*/dotnet/` |
 | C++ | CMake build from source (CLI only) | `examples/*/cpp/` |
