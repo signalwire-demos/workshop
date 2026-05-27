@@ -19,6 +19,6 @@ ruby app.rb
 | Web framework | Sinatra |
 | Server | Puma |
 | Routing | Rack::Builder (Sinatra UI + AgentBase rack app + static files) |
-| SignalWire SDK | `gem 'signalwire'` |
+| SignalWire SDK | `gem 'signalwire-sdk', require: 'signalwire'` |
 
 Method names follow Ruby idioms: `add_skill` (not `addSkill`), `define_tool` (not `defineTool`), `prompt_add_section` (snake_case).

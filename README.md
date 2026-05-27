@@ -39,7 +39,7 @@ Each pillar is implemented in all 10 SDKs:
 |---|---|---|
 | Python | `pip install signalwire-sdk` | `examples/*/python/` |
 | TypeScript | `npm install @signalwire/sdk` | `examples/*/typescript/` |
-| Ruby | `gem install signalwire` | `examples/*/ruby/` |
+| Ruby | `gem install signalwire-sdk` (imports as `require 'signalwire'`) | `examples/*/ruby/` |
 | Go | `go get github.com/signalwire/signalwire-go` | `examples/*/go/` |
 | Java | Maven Central `com.signalwire:signalwire-sdk` | `examples/*/java/` |
 | Perl | `cpanm SignalWire` | `examples/*/perl/` |
