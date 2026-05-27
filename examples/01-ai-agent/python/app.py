@@ -12,6 +12,7 @@ Serves three things at port 8000:
 
 import os
 from pathlib import Path
+from urllib.parse import quote, urlparse, urlunparse
 
 from fastapi import Request
 from fastapi.responses import FileResponse, JSONResponse
@@ -34,6 +35,11 @@ def make_server() -> AgentServer:
     server = AgentServer(host="0.0.0.0", port=int(os.environ.get("PORT", "8000")))
     agent = WorkshopAgent()
     server.register(agent, route="/agent")
+    # Capture the agent's basic-auth creds so /api/wire-number can embed
+    # them in the voice webhook URL. SignalWire's voice service does HTTP
+    # Basic against the agent endpoint — without these in the URL, every
+    # inbound call gets 401.
+    STATE["agent_basic_auth"] = agent.get_basic_auth_credentials()
 
     app = server.app
 
@@ -111,10 +117,18 @@ def make_server() -> AgentServer:
         creds = STATE["creds"]
         try:
             client = RestClient(project=creds["project_id"], token=creds["token"], host=creds["space"])
-            voice_url = public_url.rstrip("/") + "/agent"
+            # Embed agent's basic-auth creds in the voice URL so SignalWire's
+            # voice service can authenticate when calling the webhook.
+            user, pw = STATE["agent_basic_auth"]
+            parsed = urlparse(public_url.rstrip("/") + "/agent")
+            netloc_with_auth = f"{quote(user, safe='')}:{quote(pw, safe='')}@{parsed.netloc}"
+            voice_url = urlunparse(parsed._replace(netloc=netloc_with_auth))
             client.phone_numbers(sid).update(voice_url=voice_url, voice_method="POST")
             STATE["wired_number"] = {"sid": sid, "voice_url": voice_url}
-            return {"ok": True, "voice_url": voice_url}
+            # Don't leak the password back to the browser — return the
+            # un-credentialed display URL.
+            display_url = public_url.rstrip("/") + "/agent"
+            return {"ok": True, "voice_url": display_url}
         except Exception as e:
             return JSONResponse({"ok": False, "error": f"Update failed: {e}"}, status_code=400)
 

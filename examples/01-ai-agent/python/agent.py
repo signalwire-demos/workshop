@@ -14,9 +14,22 @@ from signalwire import AgentBase, DataMap
 from signalwire.core.function_result import FunctionResult
 
 
+
+
 class WorkshopAgent(AgentBase):
     def __init__(self):
-        super().__init__(name="workshop-agent", route="/agent")
+        # Fixed basic-auth creds so they survive Replit / Codespaces restarts.
+        # Without this, AgentBase generates a random password per boot and
+        # the SignalWire phone-number webhook (which embeds the password)
+        # starts returning 401 after any restart. Override via env vars in
+        # production.
+        user = os.environ.get("SWML_BASIC_AUTH_USER", "workshop")
+        password = os.environ.get("SWML_BASIC_AUTH_PASSWORD", "workshop-demo")
+        super().__init__(
+            name="workshop-agent",
+            route="/agent",
+            basic_auth=(user, password),
+        )
 
         self._configure_voice_and_prompts()
         self._add_built_in_skills()
